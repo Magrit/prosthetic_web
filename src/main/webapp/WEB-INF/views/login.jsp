@@ -1,4 +1,7 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <title>Logowanie</title>
@@ -38,7 +41,7 @@
                 <div class="form-input-content">
                     <div class="card login-form mb-0">
                         <div class="card-body pt-5">
-                            <a class="text-center" href="index.html"> <h4>Rosella</h4></a>
+                            <a class="text-center" href="/"> <h4>Rosella</h4></a>
 
                             <c:if test="${not empty param.error}">
                                 <div class="alert alert-danger">Podałeś niepoprawne dane logowania</div>

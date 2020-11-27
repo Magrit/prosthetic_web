@@ -12,16 +12,16 @@ import java.util.Set;
 
 public class SpringDataUserDetailsService implements UserDetailsService {
 
-    private UserService userService;
+    private UserRepository userRepository;
 
     @Autowired
-    public void setUserRepository(UserService userService) {
-        this.userService = userService;
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String email) {
-        AppUser appUser = userService.findByEmail(email);
+        AppUser appUser = userRepository.findUserByEmail(email);
         if (appUser == null) {
             throw new UsernameNotFoundException(email);
         }

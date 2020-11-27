@@ -23,12 +23,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/user/**").hasAnyRole("USER")
-                .antMatchers("/technician/**").hasAnyAuthority("USER","TECHNICIAN")
+                .antMatchers("/technician/**").hasAnyRole("USER","TECHNICIAN")
                 .antMatchers("/stomatologist/**").hasAnyRole("USER", "STOMATOLOGIST")
-                .and().formLogin().loginPage("/login")
+                .and().formLogin().loginPage("/login").defaultSuccessUrl("/user")
                 .failureUrl("/login?error=true")
                 .and().logout().logoutSuccessUrl("/")
                 .permitAll()
