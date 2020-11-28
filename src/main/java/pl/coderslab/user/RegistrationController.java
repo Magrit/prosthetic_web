@@ -17,10 +17,10 @@ import java.util.List;
 @Controller
 public class RegistrationController {
 
-    private final UserService userService;
+    private final UserServiceImpl userService;
     private final SpecializationService specializationService;
 
-    public RegistrationController(UserService userService, SpecializationService specializationService) {
+    public RegistrationController(UserServiceImpl userService, SpecializationService specializationService) {
         this.userService = userService;
         this.specializationService = specializationService;
     }

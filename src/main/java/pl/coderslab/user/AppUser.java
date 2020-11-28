@@ -29,6 +29,7 @@ public class AppUser {
     @Email(message = "{email.valid}")
     @Column(unique = true)
     private String email;
+    private int enabled;
 
     @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\\S+$).{8,}$", message = "{pattern.password}")
     private String password;
@@ -52,10 +53,10 @@ public class AppUser {
     @ManyToOne
     private ProstheticLaboratory prostheticLaboratory;
 
-    @ManyToMany
-    private List<Specialization> specializations;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Role> roles;
 
     @ManyToMany
-    private Set<Role> roles;
+    private List<Specialization> specializations;
 
 }

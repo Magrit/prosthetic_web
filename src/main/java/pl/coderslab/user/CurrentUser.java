@@ -9,8 +9,8 @@ public class CurrentUser extends User {
 
     private final AppUser appUser;
 
-    public CurrentUser(String email, String password, Collection<? extends GrantedAuthority> grantedAuthorities, AppUser appUser) {
-        super(email, password, grantedAuthorities);
+    public CurrentUser(String userName, String password, Collection<? extends GrantedAuthority> grantedAuthorities, AppUser appUser) {
+        super(userName, password, grantedAuthorities);
         this.appUser = appUser;
     }
 

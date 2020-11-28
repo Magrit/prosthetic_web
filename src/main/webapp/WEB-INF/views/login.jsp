@@ -49,10 +49,10 @@
 
                             <form method="post" class="mt-5 mb-5 login-input">
                                 <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Email">
+                                    <input type="text" name="username" class="form-control" placeholder="Email"/>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Password">
+                                    <input type="password" name="password" class="form-control" placeholder="Password">
                                 </div>
                                 <input type="submit" class="btn login-form__btn submit w-100" value="Zaloguj się"/>
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping
 public class LoginController {
 
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
-    public LoginController(UserService userService) {
+    public LoginController(UserServiceImpl userService) {
         this.userService = userService;
     }
 

@@ -1,6 +1,7 @@
 package pl.coderslab.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,18 +13,18 @@ import java.util.Set;
 
 public class SpringDataUserDetailsService implements UserDetailsService {
 
-    private UserRepository userRepository;
+    private UserService userService;
 
     @Autowired
-    public void setUserRepository(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public void setUserRepository(@Qualifier("userServiceImpl") UserService userService) {
+        this.userService = userService;
     }
 
     @Override
-    public UserDetails loadUserByUsername(String email) {
-        AppUser appUser = userRepository.findUserByEmail(email);
+    public UserDetails loadUserByUsername(String username) {
+        AppUser appUser = userService.findByEmail(username);
         if (appUser == null) {
-            throw new UsernameNotFoundException(email);
+            throw new UsernameNotFoundException(username);
         }
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         appUser.getRoles().forEach(r ->

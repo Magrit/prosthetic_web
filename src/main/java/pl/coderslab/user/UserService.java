@@ -1,71 +1,8 @@
 package pl.coderslab.user;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Service;
-import pl.coderslab.places.ProstheticLaboratory;
+public interface UserService {
 
-import java.util.*;
+    AppUser findByEmail(String email);
 
-@Service
-public class UserService {
-
-    private final UserRepository userRepository;
-    private final RoleRepository roleRepository;
-    private final BCryptPasswordEncoder passwordEncoder;
-
-    public UserService(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
-        this.passwordEncoder = passwordEncoder;
-    }
-
-    public void saveUser(AppUser appUser) {
-        String password = passwordEncoder.encode(appUser.getPassword());
-        appUser.setPassword(password);
-        Set<Role> roles = new HashSet<>();
-        roles.add(roleRepository.findByName("ROLE_USER"));
-        if (appUser.isTechnician()) {
-            roles.add(roleRepository.findByName("ROLE_TECHNICIAN"));
-        }
-        if (appUser.isStomatologist()) {
-            roles.add(roleRepository.findByName("ROLE_STOMATOLOGIST"));
-        }
-        if (appUser.isOwner()) {
-            roles.add(roleRepository.findByName("ROLE_OWNER"));
-        }
-
-        appUser.setRoles(roles);
-        userRepository.save(appUser);
-    }
-
-    public void addDetails(long id, ProstheticLaboratory prostheticLaboratory){
-        AppUser user = userRepository.getOne(id);
-        user.setProstheticLaboratory(prostheticLaboratory);
-    }
-
-    Optional<AppUser> findById(long id) {
-        return userRepository.findById(id);
-    }
-
-    AppUser findByEmail(String email){
-        return userRepository.findUserByEmail(email);
-    }
-
-    void updateUser(long id, String email, String firstName, String lastName, String certificateNumber) {
-        AppUser appUser = userRepository.getOne(id);
-        appUser.setEmail(email);
-        appUser.setFirstName(firstName);
-        appUser.setLastName(lastName);
-        appUser.setCertificateNumber(certificateNumber);
-        userRepository.save(appUser);
-    }
-
-    void deleteUser(long id) {
-        userRepository.delete(userRepository.getOne(id));
-
-    }
-
-    List<AppUser> findAll() {
-        return userRepository.findAll();
-    }
+    void saveUser(AppUser appUser);
 }
