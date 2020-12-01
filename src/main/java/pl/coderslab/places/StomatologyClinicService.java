@@ -1,7 +1,11 @@
 package pl.coderslab.places;
 
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Optional;
 
+@Service
 public class StomatologyClinicService {
 
     private final StomatologyClinicRepository stomatologyClinicRepository;
@@ -16,6 +20,14 @@ public class StomatologyClinicService {
 
     public Optional<StomatologyClinic> clinicInfo(long id){
         return stomatologyClinicRepository.findById(id);
+    }
+
+    public StomatologyClinic getClinic(long id){
+        return stomatologyClinicRepository.getOne(id);
+    }
+
+    public List<StomatologyClinic> clinicList(){
+        return stomatologyClinicRepository.findAll();
     }
 
     public void UpdateClinicInfo(long id, String city, String address, String nip){

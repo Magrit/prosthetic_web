@@ -6,6 +6,7 @@ import pl.coderslab.user.Role;
 import pl.coderslab.user.RoleRepository;
 import pl.coderslab.user.UserRepository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -34,6 +35,14 @@ public class ProstheticLaboratoryService {
 
     public Optional<ProstheticLaboratory> laboratoryInfo(long id){
         return prostheticLaboratoryRepository.findById(id);
+    }
+
+    public ProstheticLaboratory getLaboratory(long id){
+        return prostheticLaboratoryRepository.getOne(id);
+    }
+
+    public List<ProstheticLaboratory> laboratoryList(){
+        return prostheticLaboratoryRepository.findAll();
     }
 
     public void updateLaboratoryInfo(long id, String city, String address, String nip){

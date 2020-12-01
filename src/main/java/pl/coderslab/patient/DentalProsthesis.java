@@ -5,10 +5,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pl.coderslab.places.ProstheticLaboratory;
 import pl.coderslab.specializations.Specialization;
+import pl.coderslab.user.AppUser;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -20,8 +21,8 @@ public class DentalProsthesis {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private Date dateOfOrder;
-    private Date deadline;
+    private LocalDate dateOfOrder;
+    private LocalDate deadline;
     private String type;
     private String variety;
     private String description;
@@ -40,4 +41,7 @@ public class DentalProsthesis {
 
     @ManyToOne
     private ProstheticLaboratory prostheticLaboratory;
+
+    @ManyToOne
+    private AppUser appUser;
 }

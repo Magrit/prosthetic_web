@@ -29,7 +29,6 @@ public class AppUser {
     @Email(message = "{email.valid}")
     @Column(unique = true)
     private String email;
-    private int enabled;
 
     @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&+=])(?=\\S+$).{8,}$", message = "{pattern.password}")
     private String password;

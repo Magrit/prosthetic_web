@@ -5,19 +5,19 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-public class ChartLabels {
+public class ChartLabels implements Comparable<ChartLabels> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private Date date;
+    private LocalDate date;
     private String description;
     private boolean isDentalProsthesisOrdered;
 
@@ -26,4 +26,9 @@ public class ChartLabels {
 
     @OneToMany(mappedBy = "chartLabel")
     private List<DentalProsthesis> dentalProsthesis;
+
+    @Override
+    public int compareTo(ChartLabels c) {
+        return this.date.compareTo(c.getDate());
+    }
 }

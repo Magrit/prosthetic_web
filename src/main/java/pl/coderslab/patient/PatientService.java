@@ -1,11 +1,14 @@
 package pl.coderslab.patient;
 
+import org.springframework.stereotype.Service;
 import pl.coderslab.places.StomatologyClinic;
 import pl.coderslab.places.StomatologyClinicRepository;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class PatientService {
 
     private final PatientRepository patientRepository;
@@ -27,6 +30,9 @@ public class PatientService {
     public List<Patient> patientsSameClinic(long clinicId){
         StomatologyClinic clinic = stomatologyClinicRepository.getOne(clinicId);
         List<Patient> clinicPatients = clinic.getPatients();
+        for (Patient patient : clinicPatients) {
+            patient.getLabelsList().sort(ChartLabels::compareTo);
+        }
         return clinicPatients;
     }
 

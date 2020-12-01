@@ -1,6 +1,7 @@
 package pl.coderslab.user;
 
 import org.hibernate.Hibernate;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.coderslab.places.ProstheticLaboratory;
@@ -14,7 +15,8 @@ public class UserServiceImpl implements UserService {
     private final RoleRepository roleRepository;
     private final BCryptPasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository,
+                           BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
@@ -29,8 +31,7 @@ public class UserServiceImpl implements UserService {
 
     public void saveUser(AppUser appUser) {
         String password = passwordEncoder.encode(appUser.getPassword());
-        appUser.setPassword(password);
-        appUser.setEnabled(1);
+        appUser.setPassword(password);;
         Set<Role> roles = new HashSet<>();
         roles.add(roleRepository.findByName("ROLE_USER"));
         if (appUser.isTechnician()) {

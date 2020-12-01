@@ -1,7 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
@@ -181,17 +180,17 @@
                     <li class="icons dropdown">
                         <div class="user-img c-pointer position-relative" data-toggle="dropdown">
                             <span class="activity active"></span>
-                            <img src="images/user/1.png" height="40" width="40" alt="">
+                            <img src="images/user/form-user.png" height="40" width="40" alt="">
                         </div>
                         <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                             <div class="dropdown-content-body">
                                 <ul>
                                     <li>
-                                        <a href="app-profile.html"><i class="icon-user"></i> <span>Profile</span></a>
+                                        <a href="user/profile"><i class="icon-user"></i> <span>Profile</span></a>
                                     </li>
                                     <li>
-                                        <a href="javascript:void()">
-                                            <i class="icon-envelope-open"></i> <span>Inbox</span>
+                                        <a href="user/messages">
+                                            <i class="icon-envelope-open"></i> <span>Wiadomości</span>
                                             <div class="badge gradient-3 badge-pill gradient-1">3</div>
                                         </a>
                                     </li>
@@ -202,7 +201,7 @@
                                     </li>
                                     <li>
                                         <form action="/logout" method="post">
-                                            <label class="icon-key"><input type="submit" class="btn-light"
+                                            <label class="icon-key"><input type="submit" class="btn mb-1 btn-light"
                                                                            value="Wyloguj"></label>
                                             <input type="hidden" name="${_csrf.parameterName}"
                                                    value="${_csrf.token}"/>
@@ -227,13 +226,13 @@
         <ul class="metismenu" id="menu">
             <sec:authorize access="isAuthenticated()">
                 <li>
-                    <a href="/registration" aria-expanded="false">
-                        <i class="icon-badge menu-icon"></i><span class="nav-text">Rejestracja</span>
+                    <a href="/user" aria-expanded="false">
+                        <i class="icon-badge menu-icon"></i><span class="nav-text">Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/registration" aria-expanded="false">
-                        <i class="icon-badge menu-icon"></i><span class="nav-text">Rejestracja</span>
+                    <a href="/user/prosthesis" aria-expanded="false">
+                        <i class="icon-badge menu-icon"></i><span class="nav-text">Wykonane prace</span>
                     </a>
                 </li>
             </sec:authorize>
