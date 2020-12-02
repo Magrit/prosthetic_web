@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import pl.coderslab.patient.DentalProsthesis;
 import pl.coderslab.patient.DentalProsthesisService;
 import pl.coderslab.patient.Patient;
@@ -18,8 +17,6 @@ import pl.coderslab.places.StomatologyClinicService;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/user")
@@ -52,13 +49,13 @@ public class UserController {
     public String dashboard(Model model) {
         AppUser user = getCurrentUser();
         if (user.isStomatologist()) {
-            Optional<StomatologyClinic> clinic = Optional.ofNullable(user.getStomatologyClinic());
+            StomatologyClinic clinic = user.getStomatologyClinic();
             model.addAttribute("clinic", clinic);
-            long clinicId = clinic
-                    .map(stomatologyClinic -> stomatologyClinic.getId())
-                    .orElse(Long.parseLong("0"));
             List<Patient> clinicPatients = new ArrayList<>();
-            clinicPatients.addAll(patientService.patientsSameClinic(clinicId));
+            if (clinic == null) {
+                List<Patient> patientsSameClinic = patientService.patientsSameClinic(clinic.getId());
+                clinicPatients.addAll(patientsSameClinic);
+            }
             model.addAttribute("patients", clinicPatients);
         }
         if (user.isTechnician()) {
@@ -75,29 +72,43 @@ public class UserController {
 
     @GetMapping("/clinic")
     public String addClinicForm(Model model) {
+        StomatologyClinic chosenClinic = new StomatologyClinic();
+        model.addAttribute("choosenClinic", chosenClinic);
         model.addAttribute("clinicies", stomatologyClinicService.clinicList());
         return "/clinic-form";
     }
 
     @PostMapping("/clinic")
-    public String performClinicForm(@RequestParam long clinicId) {
+    public String performClinicForm(StomatologyClinic clinic) {
         AppUser user = getCurrentUser();
-        user.setStomatologyClinic(stomatologyClinicService.getClinic(clinicId));
+        StomatologyClinic chosenClinic = stomatologyClinicService.getClinic(clinic.getId());
+        user.setStomatologyClinic(chosenClinic);
         return "redirect:/user";
     }
 
     @GetMapping("/laboratory")
     public String addLaoboratoryForm(Model model) {
-        List<ProstheticLaboratory> laboratories = prostheticLaboratoryService.laboratoryList();
-        model.addAttribute("laboratories", laboratories);
+        ProstheticLaboratory chosenLaboratory = new ProstheticLaboratory();
+        model.addAttribute("choosenLabolatory", chosenLaboratory);
+        model.addAttribute("laboratories", prostheticLaboratoryService.laboratoryList());
         return "/laboratory-form";
     }
 
     @PostMapping("/laboratory")
-    public String performLaboratoryForm(@RequestParam long laboratoryId) {
-        AppUser user = getCurrentUser();
-        user.setProstheticLaboratory(prostheticLaboratoryService.getLaboratory(laboratoryId));
+    public String performLaboratoryForm(ProstheticLaboratory laboratory) {
+        AppUser currentUser = getCurrentUser();
+        ProstheticLaboratory chosenLabolatory = prostheticLaboratoryService.getLaboratory(laboratory.getId());
+        currentUser.setProstheticLaboratory(chosenLabolatory);
+        userService.saveUserWithoutAction(currentUser);
         return "redirect:/user";
+    }
+
+    @GetMapping("/prosthesis")
+    public String getProstheses(Model model) {
+        AppUser currentUser = getCurrentUser();
+        List<DentalProsthesis> prostheses = dentalProsthesisService.prosthesesByUser(currentUser);
+        model.addAttribute("prostheses", prostheses);
+        return "/prosthesis";
     }
 
 }

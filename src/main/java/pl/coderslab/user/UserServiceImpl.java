@@ -48,6 +48,10 @@ public class UserServiceImpl implements UserService {
         userRepository.save(appUser);
     }
 
+    public void saveUserWithoutAction(AppUser appUser){
+        userRepository.save(appUser);
+    }
+
     public void addDetails(long id, ProstheticLaboratory prostheticLaboratory){
         AppUser user = userRepository.getOne(id);
         user.setProstheticLaboratory(prostheticLaboratory);
