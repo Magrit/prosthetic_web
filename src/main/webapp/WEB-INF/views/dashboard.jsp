@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -42,13 +43,16 @@ Preloader end
                     <div class="card text-center">
                         <div class="card-body">
                             <h5 class="card-title">Twoja placówka</h5>
-                            <c:if test="${empty clinic}">
+                            <c:choose>
+                            <c:when test="${empty clinic}">
                                 <p class="card-text">Nie masz jeszcze przypisanej przychodni</p>
                                 <a href="/user/clinic" class="btn mb-1 btn-success">Dodaj przychodnię</a>
-                            </c:if>
-                            <c:if test="${not empty clinic}">
+                            </c:when>
+                            <c:otherwise>
                                 <p class="card-text">${clinic. address} <br/>${clinic.city}</p>
-                            </c:if>
+                                <a href="/user/clinic" class="btn mb-1 btn-success">Zmień przychodnię</a>
+                            </c:otherwise>
+                            </c:choose>
                         </div>
                     </div>
                 </div>
@@ -101,13 +105,16 @@ Preloader end
                     <div class="card text-center">
                         <div class="card-body">
                             <h5 class="card-title">Twoja pracownia</h5>
-                            <c:if test="${empty laboratory}">
-                                <p class="card-text">Nie masz jeszcze przypisanej pracowni</p>
-                                <a href="/user/laboratory" class="btn mb-1 btn-success">Dodaj pracownię</a>
-                            </c:if>
-                            <c:if test="${not empty clinic}">
-                                <p class="card-text">${clinic. address} <br/>${clinic.city}</p>
-                            </c:if>
+                            <c:choose>
+                                <c:when test="${empty laboratory}">
+                                    <p class="card-text">Nie masz jeszcze przypisanej pracowni</p>
+                                    <a href="/user/laboratory" class="btn mb-1 btn-success">Dodaj pracownię</a>
+                                </c:when>
+                                <c:otherwise>
+                                    <p class="card-text">${laboratory. address} <br/>${laboratory.city}</p>
+                                    <a href="/user/laboratory" class="btn mb-1 btn-success">Zmień pracownię</a>
+                                </c:otherwise>
+                            </c:choose>
                         </div>
                     </div>
                 </div>

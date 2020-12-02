@@ -230,6 +230,15 @@
                         <i class="icon-badge menu-icon"></i><span class="nav-text">Dashboard</span>
                     </a>
                 </li>
+            </sec:authorize>
+            <sec:authorize access="hasRole('STOMATOLOGIST')">
+                <li>
+                    <a href="/user/prosthesis" aria-expanded="false">
+                        <i class="icon-badge menu-icon"></i><span class="nav-text">Wykonane prace</span>
+                    </a>
+                </li>
+            </sec:authorize>
+            <sec:authorize access="hasRole('TECHNICIAN')">
                 <li>
                     <a href="/user/prosthesis" aria-expanded="false">
                         <i class="icon-badge menu-icon"></i><span class="nav-text">Wykonane prace</span>
@@ -268,13 +277,13 @@
 <!--**********************************
     Header end ti-comment-alt
 ***********************************-->
-<script src="plugins/common/common.min.js"></script>
-<script src="js/custom.min.js"></script>
-<script src="js/settings.js"></script>
-<script src="js/gleek.js"></script>
-<script src="js/styleSwitcher.js"></script>
+<script src="../plugins/common/common.min.js"></script>
+<script src="../js/custom.min.js"></script>
+<script src="../js/settings.js"></script>
+<script src="../js/gleek.js"></script>
+<script src="../js/styleSwitcher.js"></script>
 
-<script src="./js/dashboard/dashboard-1.js"></script>
+<script src="../js/dashboard/dashboard-1.js"></script>
 
 </body>
 </html>

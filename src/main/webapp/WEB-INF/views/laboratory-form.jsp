@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -7,14 +8,13 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Add clinic</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="<c:url value="images/favicon.png"/>"/>
-    <!-- Pignose Calender -->
-    <link href="<c:url value="plugins/pg-calendar/css/pignose.calendar.min.css"/>" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="16x16" href="<c:url value="../images/favicon.png"/>">
     <!-- Chartist -->
-    <link rel="stylesheet" href="<c:url value="plugins/chartist/css/chartist.min.css"/>"/>
-    <link rel="stylesheet" href="<c:url value="plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css"/>"/>
+    <link type="text/css" rel="stylesheet" href="<c:url value="../plugins/chartist/css/chartist.min.css"/>"/>
+    <link type="text/css" rel="stylesheet"
+          href="<c:url value="../plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css"/>"/>
     <!-- Custom Stylesheet -->
-    <link href="<c:url value="css/style.css"/>" rel="stylesheet">
+    <link type="text/css" href="<c:url value="../css/style.css"/>" rel="stylesheet">
 
 </head>
 <body>
@@ -48,21 +48,21 @@
                         <div class="card-body">
                             <h4 class="card-title">Dodaj pracownię, w której pracujesz</h4>
                             <div class="basic-form">
-                                <form action="/user/laboratory" method="post">
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <select name="laboratoryId">
-                                                <option value="null" label="Wybierz placówkę"/>
-                                                <c:forEach items="${laboratories}" var="laboratory">
-                                                    <option label="${laboratory.city} ${laboratory.address}"
-                                                            value="${laboratory.id}"/>
-                                                </c:forEach>
-                                            </select>
-                                            <input type="submit" class="btn btn-dark">Wybierz</input>
+                                <form:form action="/user/laboratory" method="post" modelAttribute="choosenLabolatory">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text">Options</label>
                                         </div>
+                                        <form:select path="id" class="custom-select">
+                                            <form:option selected="selected" value="0" label="Wybierz placówkę" />
+                                            <c:forEach items="${laboratories}" var="laboratory">
+                                                <form:option value="${laboratory.id}"
+                                                label="${laboratory.city} ${laboratory.address}" />
+                                            </c:forEach>
+                                        </form:select>
+                                        <input type="submit" class="btn btn-dark" value="Wybierz"/>
                                     </div>
-                                </form>
-
+                                </form:form>
                             </div>
                         </div>
                     </div>
@@ -72,5 +72,6 @@
     </div>
     <%@include file="footer.jsp" %>
 </div>
+
 </body>
 </html>

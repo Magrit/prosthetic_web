@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -7,14 +8,14 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Add clinic</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <link rel="icon" type="<c:url value="../image/png"/>" sizes="16x16" href="images/favicon.png">
     <!-- Pignose Calender -->
-    <link href="plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
+    <link href="<c:url value="../plugins/pg-calendar/css/pignose.calendar.min.css"/>" rel="stylesheet">
     <!-- Chartist -->
-    <link rel="stylesheet" href="plugins/chartist/css/chartist.min.css">
-    <link rel="stylesheet" href="plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
+    <link rel=stylesheet" href="<c:url value="../plugins/chartist/css/chartist.min.css"/>">
+    <link rel=stylesheet" href="<c:url value="../plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css"/>">
     <!-- Custom Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="<c:url value=".//css/style.css"/>" rel="stylesheet">
 
 </head>
 <body>
@@ -45,19 +46,21 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Vertical Form</h4>
+                        <h4 class="card-title">Dodaj przychodnię, w której pracujesz</h4>
                         <div class="basic-form">
                             <form action="/user/clinic" method="post">
-                                <div class="form-row">
-                                    <select name="clinicId">
-                                        <option value="null" label="Wybierz placówkę"/>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text">Options</label>
+                                    </div>
+                                    <select name="clinicId" class="custom-select">
+                                        <option selected="selected">Wybierz placówkę</option>
                                         <c:forEach items="${clinicies}" var="clinic">
-                                            <option label="${clinic.city} ${clinic.address}"
-                                                    value="${clinic.id}"/>
+                                            <option value="${clinic.id}">${clinic.city} ${clinic.address}</option>
                                         </c:forEach>
                                     </select>
+                                    <input type="submit" class="btn btn-dark" value="Wybierz" />
                                 </div>
-                                <input type="submit" class="btn btn-dark">Sign in</input>
                             </form>
                         </div>
                     </div>
