@@ -28,14 +28,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/user/**").hasRole("USER")
-                .antMatchers("/user/prosthesis").hasRole("TECHNICIAN")
-                .antMatchers("/user/patients").hasRole("STOMATOLOGIST")
-                .and().formLogin().loginPage("/login").defaultSuccessUrl("/user")
-                .failureUrl("/login?error=true")
+                .and().formLogin().loginPage("/login")
+                .usernameParameter("email").passwordParameter("password")
+                .defaultSuccessUrl("/user").failureUrl("/login?error=true")
                 .and().logout().logoutSuccessUrl("/")
                 .permitAll()
                 .and().exceptionHandling().accessDeniedPage("/403");
-        http.authorizeRequests()
-                .antMatchers( "/favicon.png").permitAll();
     }
 }

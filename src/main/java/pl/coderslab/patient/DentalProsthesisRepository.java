@@ -14,4 +14,6 @@ public interface DentalProsthesisRepository extends JpaRepository<DentalProsthes
 
     @Query("SELECT p FROM DentalProsthesis p WHERE p.appUser=?1 and p.deadline>= ?2")
     public List<DentalProsthesis> findAllByUserAndDeadline(AppUser appUser, LocalDate date);
+
+    public List<DentalProsthesis> findAllByPatient(Patient patient);
 }

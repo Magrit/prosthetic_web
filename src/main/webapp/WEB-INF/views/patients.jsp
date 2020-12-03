@@ -42,36 +42,24 @@ Preloader end
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Wykonane uzupełnienia protetyczne</h4>
+                        <h4 class="card-title">Twoi pacjenci</h4>
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered zero-configuration">
                                 <thead>
                                 <tr>
-                                    <th>Data zamówienia</th>
-                                    <th>Dada oddania pracy</th>
-                                    <th>Typ</th>
-                                    <th>Rodzaj</th>
-                                    <th>nr pesel pacjenta</th>
+                                    <th>Imię</th>
+                                    <th>Nazwisko</th>
+                                    <th>PESEL</th>
                                     <th></th>
-                                    <sec:authorize access="hasRole('STOMATOLOGIST')">
-                                        <th></th>
-                                    </sec:authorize>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <c:forEach items="${prostheses}" var="prosthesis">
+                                <c:forEach items="${patients}" var="patient">
                                 <tr>
-                                    <td>${prosthesis.dateOfOrder}</td>
-                                    <td>${prosthesis.deadline}</td>
-                                    <td>${prosthesis.type}</td>
-                                    <td>${prosthesis.variety}</td>
-                                    <c:forEach items="${prosthesis.patient}" var="patient">
-                                        <td>${patient.pesel}</td>
-                                    </c:forEach>
-                                    <td><a href="/user/prosthesis/${prosthesis.id}" class="btn mb-1 btn-success">Pokaż</a></td>
-                                    <sec:authorize access="hasRole('STOMATOLOGIST')">
-                                        <th><a href="/user/prosthesis/${prosthesis.id}" class="btn mb-1 btn-success">Edytuj</a></th>
-                                    </sec:authorize>
+                                    <td>${patient.firstName}</td>
+                                    <td>${patient.lastName}</td>
+                                    <td>${patient.pesel}</td>
+                                    <td><a href="/user/patient/${patient.id}" class="btn mb-1 btn-success">Karta pacjenta</a></td>
                                 </tr>
                                 </c:forEach>
                                 </tbody>

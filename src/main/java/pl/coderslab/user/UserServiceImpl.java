@@ -24,9 +24,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public AppUser findByEmail(String email) {
-        AppUser byEmail = userRepository.findByEmail(email);
-        Hibernate.initialize(byEmail.getRoles());
-        return byEmail;
+        return userRepository.findByEmail(email);
     }
 
     public void saveUser(AppUser appUser) {
@@ -43,12 +41,11 @@ public class UserServiceImpl implements UserService {
         if (appUser.isOwner()) {
             roles.add(roleRepository.findByName("ROLE_OWNER"));
         }
-
         appUser.setRoles(roles);
         userRepository.save(appUser);
     }
 
-    public void saveUserWithoutAction(AppUser appUser){
+    public void changeUser(AppUser appUser){
         userRepository.save(appUser);
     }
 

@@ -19,7 +19,7 @@ public class PatientService {
         this.stomatologyClinicRepository = stomatologyClinicRepository;
     }
 
-    public void newPatient(Patient patient){
+    public void addPatient(Patient patient){
         patientRepository.save(patient);
     }
 
@@ -47,5 +47,9 @@ public class PatientService {
 
     public void deletePatient(long id){
         patientRepository.deleteById(id);
+    }
+
+    public Patient getPatient(long id) {
+        return patientRepository.getOne(id);
     }
 }

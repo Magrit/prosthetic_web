@@ -29,6 +29,10 @@ public class DentalProsthesisService {
         return dentalProsthesisRepository.findAllByUserAndDeadline(user, date);
     }
 
+    public List<DentalProsthesis> patientsProtheses(Patient patient){
+        return dentalProsthesisRepository.findAllByPatient(patient);
+    }
+
     public void deleteProsthesis(long id){
         dentalProsthesisRepository.deleteById(id);
     }

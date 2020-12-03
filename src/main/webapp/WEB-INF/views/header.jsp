@@ -1,6 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="d" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
@@ -14,10 +15,11 @@
 <div class="nav-header">
     <div class="brand-logo">
         <a href="/">
-            <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
-            <span class="logo-compact"><img src="images/logo-compact.png" alt=""></span>
+            <b class="logo-abbr"><img src="<d:url value="../images/logo.png" />" alt=""> </b>
+            <span class="logo-compact"><img src="<d:url value="../images/logo-compact.png" />"
+                                            alt=""></span>
             <span class="brand-title">
-                        <img src="images/logo-text.png" alt="">
+                        <img src="<d:url value="../images/logo-text.png"/> " alt="">
                     </span>
         </a>
     </div>
@@ -39,7 +41,7 @@
         </div>
         <div class="header-right">
             <sec:authorize access="hasRole('owner')">
-                <li class="icons dropdown"><a href="javascript:void(0)" data-toggle="dropdown">--%>
+                <li class="icons dropdown"><a href="javascript:void(0)" data-toggle="dropdown">
                     <i class="mdi mdi-bell-outline"></i>
                     <span class="badge badge-pill gradient-2">3</span>
                 </a>
@@ -169,18 +171,18 @@
                         </div>
                     </div>
                 </li>
+                <sec:authorize access="isAnonymous()">
                 <li class="icons d-none d-md-flex">
-                    <sec:authorize access="isAnonymous()">
                         <a href="/login" class="log-appUser">
                             <span>Zaloguj się</span>
                         </a>
-                    </sec:authorize>
                 </li>
+                </sec:authorize>
                 <sec:authorize access="isAuthenticated()">
                     <li class="icons dropdown">
                         <div class="user-img c-pointer position-relative" data-toggle="dropdown">
                             <span class="activity active"></span>
-                            <img src="images/user/form-user.png" height="40" width="40" alt="">
+                            <img src="../images/user/form-user.png" height="40" width="40" alt="">
                         </div>
                         <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
                             <div class="dropdown-content-body">
@@ -233,8 +235,8 @@
             </sec:authorize>
             <sec:authorize access="hasRole('STOMATOLOGIST')">
                 <li>
-                    <a href="/user/prosthesis" aria-expanded="false">
-                        <i class="icon-badge menu-icon"></i><span class="nav-text">Wykonane prace</span>
+                    <a href="/user/patients" aria-expanded="false">
+                        <i class="icon-badge menu-icon"></i><span class="nav-text">Pacjenci</span>
                     </a>
                 </li>
             </sec:authorize>

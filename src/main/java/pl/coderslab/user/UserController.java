@@ -52,7 +52,7 @@ public class UserController {
             StomatologyClinic clinic = user.getStomatologyClinic();
             model.addAttribute("clinic", clinic);
             List<Patient> clinicPatients = new ArrayList<>();
-            if (clinic == null) {
+            if (clinic != null) {
                 List<Patient> patientsSameClinic = patientService.patientsSameClinic(clinic.getId());
                 clinicPatients.addAll(patientsSameClinic);
             }
@@ -73,8 +73,8 @@ public class UserController {
     @GetMapping("/clinic")
     public String addClinicForm(Model model) {
         StomatologyClinic chosenClinic = new StomatologyClinic();
-        model.addAttribute("choosenClinic", chosenClinic);
-        model.addAttribute("clinicies", stomatologyClinicService.clinicList());
+        model.addAttribute("chosenClinic", chosenClinic);
+        model.addAttribute("clinics", stomatologyClinicService.clinicList());
         return "/clinic-form";
     }
 
@@ -83,6 +83,7 @@ public class UserController {
         AppUser user = getCurrentUser();
         StomatologyClinic chosenClinic = stomatologyClinicService.getClinic(clinic.getId());
         user.setStomatologyClinic(chosenClinic);
+        userService.saveUser(user);
         return "redirect:/user";
     }
 
@@ -99,7 +100,7 @@ public class UserController {
         AppUser currentUser = getCurrentUser();
         ProstheticLaboratory chosenLabolatory = prostheticLaboratoryService.getLaboratory(laboratory.getId());
         currentUser.setProstheticLaboratory(chosenLabolatory);
-        userService.saveUserWithoutAction(currentUser);
+        userService.changeUser(currentUser);
         return "redirect:/user";
     }
 
@@ -109,6 +110,14 @@ public class UserController {
         List<DentalProsthesis> prostheses = dentalProsthesisService.prosthesesByUser(currentUser);
         model.addAttribute("prostheses", prostheses);
         return "/prosthesis";
+    }
+
+    @GetMapping("/patients")
+    public String getPatients(Model model) {
+        AppUser currentUser = getCurrentUser();
+        List<Patient> patientsSameClinic = patientService.patientsSameClinic(currentUser.getStomatologyClinic().getId());
+        model.addAttribute("patients", patientsSameClinic);
+        return "/patients";
     }
 
 }

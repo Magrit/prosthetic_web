@@ -15,7 +15,7 @@
     <link rel=stylesheet" href="<c:url value="../plugins/chartist/css/chartist.min.css"/>">
     <link rel=stylesheet" href="<c:url value="../plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css"/>">
     <!-- Custom Stylesheet -->
-    <link href="<c:url value=".//css/style.css"/>" rel="stylesheet">
+    <link href="<c:url value="../css/style.css"/>" rel="stylesheet">
 
 </head>
 <body>
@@ -41,34 +41,41 @@
 <div id="main-wrapper">
 
     <%@include file="header.jsp" %>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Dodaj przychodnię, w której pracujesz</h4>
-                        <div class="basic-form">
-                            <form action="/user/clinic" method="post">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text">Options</label>
+
+    <div class="content-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Dodaj pracownię, w której pracujesz</h4>
+                            <div class="basic-form">
+                                <form:form action="/user/clinic" method="post" modelAttribute="chosenClinic">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <label class="input-group-text">Options</label>
+                                        </div>
+                                        <form:select path="id" class="custom-select">
+                                            <form:option selected="selected" value="0" label="Wybierz przychodnię"/>
+                                            <c:forEach items="${clinics}" var="clinic">
+                                                <form:option value="${clinic.id}"
+                                                             label="${clinic.city} ${clinic.address}"/>
+                                            </c:forEach>
+                                        </form:select>
+                                        <input type="submit" class="btn btn-dark" value="Wybierz"/>
                                     </div>
-                                    <select name="clinicId" class="custom-select">
-                                        <option selected="selected">Wybierz placówkę</option>
-                                        <c:forEach items="${clinicies}" var="clinic">
-                                            <option value="${clinic.id}">${clinic.city} ${clinic.address}</option>
-                                        </c:forEach>
-                                    </select>
-                                    <input type="submit" class="btn btn-dark" value="Wybierz" />
-                                </div>
-                            </form>
+                                </form:form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <%@include file="footer.jsp" %>
+
 </div>
+
 </body>
 </html>

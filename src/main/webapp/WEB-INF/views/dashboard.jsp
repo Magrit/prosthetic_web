@@ -67,7 +67,8 @@ Preloader end
                             <a href="user/patient" class="btn mb-1 btn-success">Dodaj pacjenta</a>
                             <c:forEach items="${patients}" var="patient">
                                 <h4 class="card-title">${patient.firstName} ${patient.lastName}</h4>
-                                <p class="text-muted"><code></code>
+                                <p class="text-muted"><a href="/user/patient/new/${patient.id}" class="btn mb-1 btn-secondary">
+                                    Dodaj wizytę</a>
                                 </p>
                                 <div class="accordion">
                                     <c:forEach items="${patient.labelsList}" var="label">
@@ -85,6 +86,7 @@ Preloader end
                                                     protetyczne <span class="btn-icon-right"><i
                                                             class="fa fa-shopping-cart"></i></span>
 
+                                                </a>
                                             </div>
                                         </div>
                                     </c:forEach>
