@@ -65,11 +65,9 @@ Preloader end
                                 </tbody>
                                 <tfoot>
                                 <tr>
-                                    <th>Data zamówienia</th>
-                                    <th>Dada oddania pracy</th>
-                                    <th>Typ</th>
-                                    <th>Rodzaj</th>
-                                    <th>nr pesel pacjenta</th>
+                                    <th>Imię</th>
+                                    <th>Nazwisko</th>
+                                    <th>PESEL</th>
                                     <th></th>
                                 </tr>
                                 </tfoot>

@@ -8,12 +8,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Add clinic</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="<c:url value="../image/png"/>" sizes="16x16" href="images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../resources/static/images/favicon.png">
     <!-- Pignose Calender -->
     <link href="<c:url value="../plugins/pg-calendar/css/pignose.calendar.min.css"/>" rel="stylesheet">
-    <!-- Chartist -->
-    <link rel=stylesheet" href="<c:url value="../plugins/chartist/css/chartist.min.css"/>">
-    <link rel=stylesheet" href="<c:url value="../plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css"/>">
     <!-- Custom Stylesheet -->
     <link href="<c:url value="../css/style.css"/>" rel="stylesheet">
 

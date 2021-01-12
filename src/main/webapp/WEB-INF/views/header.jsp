@@ -14,7 +14,8 @@
         ***********************************-->
 <div class="nav-header">
     <div class="brand-logo">
-        <a href="/">
+        <sec:authorize access="isAuthenticated()"> <a href="/dashboard"></sec:authorize>
+            <sec:authorize access="isAnonymous()"><a href="/"></sec:authorize>
             <b class="logo-abbr"><img src="<d:url value="../images/logo.png" />" alt=""> </b>
             <span class="logo-compact"><img src="<d:url value="../images/logo-compact.png" />"
                                             alt=""></span>
@@ -232,6 +233,11 @@
                         <i class="icon-badge menu-icon"></i><span class="nav-text">Dashboard</span>
                     </a>
                 </li>
+                <li>
+                    <a href="/user/password" aria-expanded="false">
+                        <i class="icon-badge menu-icon"></i><span class="nav-text">Zmień hasło</span>
+                    </a>
+                </li>
             </sec:authorize>
             <sec:authorize access="hasRole('STOMATOLOGIST')">
                 <li>
@@ -247,11 +253,13 @@
                     </a>
                 </li>
             </sec:authorize>
+            <sec:authorize access="isAnonymous()">
             <li>
                 <a href="/registration" aria-expanded="false">
                     <i class="icon-badge menu-icon"></i><span class="nav-text">Rejestracja</span>
                 </a>
             </li>
+            </sec:authorize>
             <li>
                 <a href="/about" aria-expanded="false">
                     <i class="icon-badge menu-icon"></i><span class="nav-text">O aplikacji</span>
@@ -262,9 +270,8 @@
                     <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Współpracujące placówki</span>
                 </a>
                 <ul aria-expanded="false">
-                    <li><a href="./layout-blank.html">Pracownie dentystyczne</a></li>
-                    <li><a href="./layout-one-column.html">Gabinety stomatologiczne</a></li>
-                    <li><a href="./layout-two-column.html">Szukaj</a></li>
+                    <li><a href="/laboratories">Pracownie dentystyczne</a></li>
+                    <li><a href="/clinics">Gabinety stomatologiczne</a></li>
                 </ul>
             </li>
             <li>
@@ -285,7 +292,6 @@
 <script src="../js/gleek.js"></script>
 <script src="../js/styleSwitcher.js"></script>
 
-<script src="../js/dashboard/dashboard-1.js"></script>
 
 </body>
 </html>

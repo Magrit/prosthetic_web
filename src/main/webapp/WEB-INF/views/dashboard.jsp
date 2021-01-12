@@ -7,14 +7,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Dashboard</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <!-- Pignose Calender -->
-    <link href="plugins/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../images/favicon.png">
     <!-- Chartist -->
-    <link rel="stylesheet" href="plugins/chartist/css/chartist.min.css">
-    <link rel="stylesheet" href="plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
+    <link rel="stylesheet" href="../plugins/chartist/css/chartist.min.css">
+    <link rel="stylesheet" href="../plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
     <!-- Custom Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
 
 </head>
 <body>
@@ -50,14 +48,22 @@ Preloader end
                             </c:when>
                             <c:otherwise>
                                 <p class="card-text">${clinic. address} <br/>${clinic.city}</p>
-                                <a href="/user/clinic" class="btn mb-1 btn-success">Zmień przychodnię</a>
+                                <a href="/user/clinic" class="btn mb-1 btn-light">Zmień przychodnię</a>
                             </c:otherwise>
                             </c:choose>
                         </div>
                     </div>
                 </div>
-                <div class="collg-6">
-
+                <div class="col-lg-6">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Twoje dane</h5>
+                                    <p class="card-text">${user.firstName} ${user.lastName}</p>
+                                    <p class="card-text">Email: ${user.email}</p>
+                                    <p class="card-text">Nr dyplomu:${user.certificateNumber}</p>
+                                    <a href="/user/data" class="btn mb-1 btn-light">Zmień dane</a>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-lg-12">
@@ -120,6 +126,20 @@ Preloader end
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-6">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Twoje dane</h5>
+                            <p class="card-text">${user.firstName} ${user.lastName}</p>
+                            <p class="card-text">Email: ${user.email}</p>
+                            <p class="card-text">Nr dyplomu:${user.certificateNumber}</p>
+                            <p class="card-text">Rodzaje prac:
+                                <c:forEach items="${user.specializations}" var="spec">${spec.name}</c:forEach> </p>
+                            <a href="/user/data" class="btn mb-1 btn-light">Zmień dane</a>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">

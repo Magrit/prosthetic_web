@@ -8,13 +8,13 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Add clinic</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="<c:url value="../../images/favicon.png"/>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<c:url value="../../../images/favicon.png"/>">
     <!-- Chartist -->
-    <link type="text/css" rel="stylesheet" href="<c:url value="../plugins/chartist/css/chartist.min.css"/>"/>
+    <link type="text/css" rel="stylesheet" href="<c:url value="../../plugins/chartist/css/chartist.min.css"/>"/>
     <link type="text/css" rel="stylesheet"
-          href="<c:url value="../plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css"/>"/>
+          href="<c:url value="../../plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css"/>"/>
     <!-- Custom Stylesheet -->
-    <link type="text/css" href="<c:url value="../css/style.css"/>" rel="stylesheet">
+    <link type="text/css" href="<c:url value="../../css/style.css"/>" rel="stylesheet">
 
 </head>
 <body>
@@ -48,7 +48,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Dodaj pracownię, w której pracujesz</h4>
                             <div class="basic-form">
-                                <form:form action="/user/laboratory" method="post" modelAttribute="chosenLabolatory">
+                                <form:form action="/user/laboratory" method="post" modelAttribute="chosenLaboratory">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <label class="input-group-text">Options</label>
