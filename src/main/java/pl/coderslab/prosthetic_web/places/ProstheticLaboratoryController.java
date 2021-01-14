@@ -25,7 +25,7 @@ public class ProstheticLaboratoryController {
         ProstheticLaboratory chosenLaboratory = new ProstheticLaboratory();
         model.addAttribute("chosenLaboratory", chosenLaboratory);
         model.addAttribute("laboratories", laboratoryService.laboratoryList());
-        return "/laboratory-form";
+        return "/user/laboratory-form";
     }
 
     @PostMapping("/laboratory")

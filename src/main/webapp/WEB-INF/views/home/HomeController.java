@@ -25,29 +25,29 @@ public class HomeController {
 
     @GetMapping("")
     public String home() {
-        return "/home";
+        return "/home/home";
     }
 
     @GetMapping("/about")
     public String about(){
-        return "/about";
+        return "/home/about";
     }
 
     @GetMapping("/contact")
     public String contact(){
-        return "/contact";
+        return "/home/contact";
     }
 
     @GetMapping("/laboratories")
     public String laboratories(Model model){
         model.addAttribute("laboratories", laboratoryService.laboratoryList());
-        return "/laboratories";
+        return "/home/laboratories";
     }
 
     @GetMapping("/clinics")
     public String clinics(Model model){
         model.addAttribute("clinics", clinicService.clinicList());
-        return "/clinics";
+        return "/home/clinics";
     }
 
 }

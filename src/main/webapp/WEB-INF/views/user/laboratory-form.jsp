@@ -8,11 +8,13 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Add clinic</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../../../resources/static/images/favicon.png">
-    <!-- Pignose Calender -->
-    <link href="<c:url value="../plugins/pg-calendar/css/pignose.calendar.min.css"/>" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="16x16" href="<c:url value="../../../images/favicon.png"/>">
+    <!-- Chartist -->
+    <link type="text/css" rel="stylesheet" href="<c:url value="../../plugins/chartist/css/chartist.min.css"/>"/>
+    <link type="text/css" rel="stylesheet"
+          href="<c:url value="../../plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css"/>"/>
     <!-- Custom Stylesheet -->
-    <link href="<c:url value="../css/style.css"/>" rel="stylesheet">
+    <link type="text/css" href="<c:url value="../../css/style.css"/>" rel="stylesheet">
 
 </head>
 <body>
@@ -37,8 +39,7 @@
 ***********************************-->
 <div id="main-wrapper">
 
-    <%@include file="header.jsp" %>
-
+    <%@include file="../home/header.jsp" %>
     <div class="content-body">
         <div class="container-fluid">
             <div class="row">
@@ -47,16 +48,16 @@
                         <div class="card-body">
                             <h4 class="card-title">Dodaj pracownię, w której pracujesz</h4>
                             <div class="basic-form">
-                                <form:form action="/user/clinic" method="post" modelAttribute="chosenClinic">
+                                <form:form action="/user/laboratory" method="post" modelAttribute="chosenLaboratory">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <label class="input-group-text">Options</label>
                                         </div>
                                         <form:select path="id" class="custom-select">
-                                            <form:option selected="selected" value="0" label="Wybierz przychodnię"/>
-                                            <c:forEach items="${clinics}" var="clinic">
-                                                <form:option value="${clinic.id}"
-                                                             label="${clinic.city} ${clinic.address}"/>
+                                            <form:option selected="selected" value="0" label="Wybierz placówkę" />
+                                            <c:forEach items="${laboratories}" var="laboratory">
+                                                <form:option value="${laboratory.id}"
+                                                label="${laboratory.city} ${laboratory.address}" />
                                             </c:forEach>
                                         </form:select>
                                         <input type="submit" class="btn btn-dark" value="Wybierz"/>
@@ -69,9 +70,7 @@
             </div>
         </div>
     </div>
-
-    <%@include file="footer.jsp" %>
-
+    <%@include file="../home/footer.jsp" %>
 </div>
 
 </body>

@@ -26,17 +26,12 @@ public class UserController {
     private final UserServiceImpl userService;
     private final DentalProsthesisService dentalProsthesisService;
     private final PatientService patientService;
-    private final StomatologyClinicService stomatologyClinicService;
-    private final ProstheticLaboratoryService prostheticLaboratoryService;
 
     public UserController(UserServiceImpl userService, DentalProsthesisService dentalProsthesisService,
-                          PatientService patientService, StomatologyClinicService stomatologyClinicService,
-                          ProstheticLaboratoryService prostheticLaboratoryService) {
+                          PatientService patientService) {
         this.userService = userService;
         this.dentalProsthesisService = dentalProsthesisService;
         this.patientService = patientService;
-        this.stomatologyClinicService = stomatologyClinicService;
-        this.prostheticLaboratoryService = prostheticLaboratoryService;
     }
 
     @GetMapping("")
@@ -63,7 +58,7 @@ public class UserController {
             System.out.println(user.getEmail());
         }
         model.addAttribute("user", user);
-        return "/dashboard";
+        return "user/dashboard";
     }
 
     @GetMapping("/data")
@@ -72,7 +67,7 @@ public class UserController {
         model.addAttribute("user", user);
         Hibernate.initialize(user.getSpecializations());
         model.addAttribute("specializationsList", user.getSpecializations());
-        return "/change-data";
+        return "/user/change-data";
     }
 
     @PostMapping("/data")
@@ -80,7 +75,7 @@ public class UserController {
         AppUser currentUser = userService.getCurrentUser();
         userService.updateUser(currentUser.getId(), user.getEmail(), user.getFirstName(), user.getLastName(),
                 user.getCertificateNumber());
-        return "/user";
+        return "redirect:/user";
     }
 
 }

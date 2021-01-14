@@ -11,13 +11,13 @@ import pl.coderslab.prosthetic_web.user.UserServiceImpl;
 import java.util.List;
 
 @Controller
-public class DetailsController {
+public class DentalProsthesisController {
 
     private final UserServiceImpl userService;
     private final DentalProsthesisService prosthesisService;
     private final PatientService patientService;
 
-    public DetailsController(UserServiceImpl userService, DentalProsthesisService prosthesisService, PatientService patientService) {
+    public DentalProsthesisController(UserServiceImpl userService, DentalProsthesisService prosthesisService, PatientService patientService) {
         this.userService = userService;
         this.prosthesisService = prosthesisService;
         this.patientService = patientService;
@@ -34,15 +34,8 @@ public class DetailsController {
         AppUser currentUser = getCurrentUser();
         List<DentalProsthesis> prostheses = prosthesisService.prosthesesByUser(currentUser);
         model.addAttribute("prostheses", prostheses);
-        return "/prosthesis";
+        return "/user/prosthesis";
     }
 
-    @GetMapping("/user/patients")
-    public String getPatients(Model model) {
-        AppUser user = getCurrentUser();
-        List<Patient> patientsSameClinic = patientService.patientsSameClinic(user.getStomatologyClinic().getId());
-        model.addAttribute("patients", patientsSameClinic);
-        return "/patients";
-    }
 
 }

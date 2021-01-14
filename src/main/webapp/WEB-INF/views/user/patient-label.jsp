@@ -35,7 +35,7 @@
 ***********************************-->
 <div id="main-wrapper">
 
-    <%@include file="header.jsp" %>
+    <%@include file="../home/header.jsp" %>
     <div class="content-body">
         <div class="container-fluid">
             <div class="row">
@@ -65,7 +65,7 @@
         </div>
     </div>
 </div>
-<%@include file="footer.jsp" %>
+<%@include file="../home/footer.jsp" %>
 </div>
 
 

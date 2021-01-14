@@ -30,7 +30,7 @@
 ********************-->
 
 <div id="main-wrapper">
-    <%@include file="header.jsp"%>
+    <%@include file="../home/header.jsp"%>
 
     <div class="content-body">
 
@@ -40,7 +40,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="media align-items-center mb-4">
-                                <img class="mr-3" src="../../../resources/static/images/avatar/11.png" width="80" height="80" alt="">
+                                <img class="mr-3" src="../../../../resources/static/images/avatar/11.png" width="80" height="80" alt="">
                                 <div class="media-body">
                                     <h3 class="mb-0">${patient.firstName} ${patient.lastName}</h3>
                                     <p class="text-muted mb-0">${patient.pesel}</p>
@@ -106,7 +106,7 @@
                         <div class="card-body">
                             <c:forEach items="chartLabels" var="label">
                             <div class="media media-reply">
-                                <img class="mr-3 circle-rounded" src="../../../resources/static/images/avatar/2.jpg" width="50" height="50" alt="Generic placeholder image">
+                                <img class="mr-3 circle-rounded" src="../../../../resources/static/images/avatar/2.jpg" width="50" height="50" alt="Generic placeholder image">
                                 <div class="media-body">
                                     <div class="d-sm-flex justify-content-between mb-2">
                                         <h5 class="mb-sm-0">${label.date}
@@ -163,7 +163,7 @@
         <!-- #/ container -->
     </div>
 
-    <%@include file="footer.jsp"%>
+    <%@include file="../home/footer.jsp"%>
 
 </div>
 

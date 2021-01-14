@@ -31,7 +31,7 @@
 ********************-->
 <div id="main-wrapper">
 
-    <%@include file="header.jsp" %>
+    <%@include file="../home/header.jsp" %>
 
 
     <div class="login-form-bg h-100">
@@ -68,7 +68,7 @@
         </div>
     </div>
 
-    <%@include file="footer.jsp" %>
+    <%@include file="../home/footer.jsp" %>
 
 </div>
 <!--**********************************

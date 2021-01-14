@@ -26,7 +26,7 @@ public class StomatologyClinicController {
         StomatologyClinic chosenClinic = new StomatologyClinic();
         model.addAttribute("chosenClinic", chosenClinic);
         model.addAttribute("clinics", clinicService.clinicList());
-        return "/clinic-form";
+        return "/user/clinic-form";
     }
 
     @PostMapping("/clinic")

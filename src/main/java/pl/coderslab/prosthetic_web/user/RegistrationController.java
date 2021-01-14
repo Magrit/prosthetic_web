@@ -34,7 +34,7 @@ public class RegistrationController {
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(Model model) {
         model.addAttribute("user", new AppUser());
-        return "/registration";
+        return "/user/registration";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
@@ -43,7 +43,7 @@ public class RegistrationController {
         String confirmPassword = request.getParameter("confirmPassword");
 
         if (result.hasErrors() || !user.getPassword().equals(confirmPassword)) {
-            return "/registration";
+            return "/user/registration";
         }else{
             userService.saveUser(user);
             attributes.addFlashAttribute("message", "Pomyślnie zarejestrowano nowego użytkownika");

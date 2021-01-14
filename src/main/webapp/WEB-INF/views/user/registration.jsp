@@ -34,7 +34,7 @@
     Preloader end
 ********************-->
 <div id="main-wrapper">
-    <%@include file="header.jsp"%>
+    <%@include file="../home/header.jsp"%>
 
     <div class="login-form-bg h-100">
         <div class="container h-100">
@@ -137,19 +137,19 @@
         </div>
     </div>
 
-    <%@include file="footer.jsp" %>
+    <%@include file="../home/footer.jsp" %>
 
 </div>
 <!--**********************************
     Scripts
 ***********************************-->
-<script src="../../../resources/static/plugins/common/common.min.js"></script>
-<script src="../../../resources/static/js/custom.min.js"></script>
-<script src="../../../resources/static/js/settings.js"></script>
-<script src="../../../resources/static/js/gleek.js"></script>
-<script src="../../../resources/static/js/styleSwitcher.js"></script>
+<script src="../../../../resources/static/plugins/common/common.min.js"></script>
+<script src="../../../../resources/static/js/custom.min.js"></script>
+<script src="../../../../resources/static/js/settings.js"></script>
+<script src="../../../../resources/static/js/gleek.js"></script>
+<script src="../../../../resources/static/js/styleSwitcher.js"></script>
 
-<script src="../../../resources/static/js/plugins-init/form-specialization.js"></script>
+<script src="../../../../resources/static/js/plugins-init/form-specialization.js"></script>
 <!--**********************************
     Scripts
 ***********************************-->

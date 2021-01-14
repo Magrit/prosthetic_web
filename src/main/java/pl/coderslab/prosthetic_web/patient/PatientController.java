@@ -17,7 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Controller
-@RequestMapping("/user/patient")
+@RequestMapping("/user")
 public class PatientController {
 
     private final PatientService patientService;
@@ -42,13 +42,13 @@ public class PatientController {
         return userService.findByEmail(currentUser.getAppUser().getEmail());
     }
 
-    @GetMapping("")
+    @GetMapping("/patient")
     public String addPatient(Model model){
         model.addAttribute("patient", new Patient());
-        return "/patient-new";
+        return "/user/patient-new";
     }
 
-    @PostMapping("")
+    @PostMapping("/patient")
     public String preformPatient(Patient patient){
         patientService.addPatient(patient);
         StomatologyClinic clinic = getCurrentUser().getStomatologyClinic();
@@ -57,7 +57,7 @@ public class PatientController {
         return "redirect:/";
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/patient/{id}")
     public String patientInfo(@PathVariable long id, Model model){
         Patient patient = patientService.getPatient(id);
         model.addAttribute("patient", patient);
@@ -66,19 +66,19 @@ public class PatientController {
         List<ChartLabels> chartLabels = chartLabelsService.patientChart(id);
         model.addAttribute("labelCounter", chartLabels.size());
         model.addAttribute("chartLabels", chartLabels);
-        return "/patient-info";
+        return "/user/patient-info";
     }
 
-    @GetMapping("/new/{patientId}")
+    @GetMapping("/patient/new/{patientId}")
     public String addLabel(@PathVariable long patientId, Model model){
         Patient patient = patientService.getPatient(patientId);
         model.addAttribute("patient", patient);
         ChartLabels chartLabels = new ChartLabels();
         model.addAttribute("label", chartLabels);
-        return "/patient-label";
+        return "/user/patient-label";
     }
 
-    @PostMapping("/new/{patientId}")
+    @PostMapping("/patient/new/{patientId}")
     public String performLabel(@PathVariable long patientId, ChartLabels label){
         Patient patient = patientService.getPatient(patientId);
         List<ChartLabels> patientLabelsList = patient.getLabelsList();
@@ -87,4 +87,13 @@ public class PatientController {
         patientService.addPatient(patient);
         return "redirect:/";
     }
+
+    @GetMapping("/patients")
+    public String getPatients(Model model) {
+        AppUser user = getCurrentUser();
+        List<Patient> patientsSameClinic = patientService.patientsSameClinic(user.getStomatologyClinic().getId());
+        model.addAttribute("patients", patientsSameClinic);
+        return "/user/patients";
+    }
+
 }

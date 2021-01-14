@@ -30,7 +30,7 @@ Preloader start
 Preloader end
 ********************-->
 
-<%@include file="header.jsp" %>
+<%@include file="../home/header.jsp" %>
 
 <div class="content-body">
 
@@ -176,6 +176,6 @@ Preloader end
 
 </div>
 
-<%@include file="footer.jsp" %>
+<%@include file="../home/footer.jsp" %>
 </body>
 </html>

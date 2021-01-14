@@ -118,15 +118,15 @@
                                     </ol>
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
-                                            <img class="d-block w-100" src="images/big/img5.jpg"
+                                            <img class="d-block w-100" src="../../../../resources/static/images/big/img5.jpg"
                                                  alt="First slide">
                                         </div>
                                         <div class="carousel-item">
-                                            <img class="d-block w-100" src="images/big/img6.jpg"
+                                            <img class="d-block w-100" src="../../../../resources/static/images/big/img6.jpg"
                                                  alt="Second slide">
                                         </div>
                                         <div class="carousel-item">
-                                            <img class="d-block w-100" src="images/big/img5.jpg"
+                                            <img class="d-block w-100" src="../../../../resources/static/images/big/img5.jpg"
                                                  alt="Third slide">
                                         </div>
                                     </div>
@@ -180,7 +180,7 @@
                 <div class="row">
                     <div class="col-md-6 col-lg-3">
                         <div class="card">
-                            <img class="img-fluid" src="images/big/img1.jpg" alt="">
+                            <img class="img-fluid" src="../../../../resources/static/images/big/img1.jpg" alt="">
                             <div class="card-body">
                                 <h5 class="card-title">Card title</h5>
                                 <p class="card-text">This is a wider card with supporting text and below as a natural
@@ -193,7 +193,7 @@
                     <!-- End Col -->
                     <div class="col-md-6 col-lg-3">
                         <div class="card">
-                            <img class="img-fluid" src="images/big/img2.jpg" alt="">
+                            <img class="img-fluid" src="../../../../resources/static/images/big/img2.jpg" alt="">
                             <div class="card-body">
                                 <h5 class="card-title">Card title</h5>
                                 <p class="card-text">This is a wider card with supporting text and below as a natural
@@ -206,7 +206,7 @@
                     <!-- End Col -->
                     <div class="col-md-6 col-lg-3">
                         <div class="card">
-                            <img class="img-fluid" src="images/big/img3.jpg" alt="">
+                            <img class="img-fluid" src="../../../../resources/static/images/big/img3.jpg" alt="">
                             <div class="card-body">
                                 <h5 class="card-title">Card title</h5>
                                 <p class="card-text">This is a wider card with supporting text and below as a natural
@@ -219,7 +219,7 @@
                     <!-- End Col -->
                     <div class="col-md-6 col-lg-3">
                         <div class="card">
-                            <img class="img-fluid" src="images/big/img4.jpg" alt="">
+                            <img class="img-fluid" src="../../../../resources/static/images/big/img4.jpg" alt="">
                             <div class="card-body">
                                 <h5 class="card-title">Card title</h5>
                                 <p class="card-text">This is a wider card with supporting text and below as a natural
@@ -246,31 +246,31 @@
     Scripts
 ***********************************-->
 
-<script src="plugins/common/common.min.js"></script>
-<script src="js/custom.min.js"></script>
-<script src="js/settings.js"></script>
-<script src="js/gleek.js"></script>
-<script src="js/styleSwitcher.js"></script>
+<script src="../../../../resources/static/plugins/common/common.min.js"></script>
+<script src="../../../../resources/static/js/custom.min.js"></script>
+<script src="../../../../resources/static/js/settings.js"></script>
+<script src="../../../../resources/static/js/gleek.js"></script>
+<script src="../../../../resources/static/js/styleSwitcher.js"></script>
 
 <!-- Chartjs -->
-<script src="plugins/chart.js/Chart.bundle.min.js"></script>
+<script src="../../../../resources/static/plugins/chart.js/Chart.bundle.min.js"></script>
 <!-- Circle progress -->
-<script src="plugins/circle-progress/circle-progress.min.js"></script>
+<script src="../../../../resources/static/plugins/circle-progress/circle-progress.min.js"></script>
 <!-- Datamap -->
-<script src="plugins/d3v3/index.js"></script>
-<script src="plugins/topojson/topojson.min.js"></script>
-<script src="plugins/datamaps/datamaps.world.min.js"></script>
+<script src="../../../../resources/static/plugins/d3v3/index.js"></script>
+<script src="../../../../resources/static/plugins/topojson/topojson.min.js"></script>
+<script src="../../../../resources/static/plugins/datamaps/datamaps.world.min.js"></script>
 <!-- Morrisjs -->
-<script src="plugins/raphael/raphael.min.js"></script>
-<script src="plugins/morris/morris.min.js"></script>
+<script src="../../../../resources/static/plugins/raphael/raphael.min.js"></script>
+<script src="../../../../resources/static/plugins/morris/morris.min.js"></script>
 <!-- Pignose Calender -->
-<script src="plugins/moment/moment.min.js"></script>
-<script src="plugins/pg-calendar/js/pignose.calendar.min.js"></script>
+<script src="../../../../resources/static/plugins/moment/moment.min.js"></script>
+<script src="../../../../resources/static/plugins/pg-calendar/js/pignose.calendar.min.js"></script>
 <!-- ChartistJS -->
-<script src="plugins/chartist/js/chartist.min.js"></script>
-<script src="plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
+<script src="../../../../resources/static/plugins/chartist/js/chartist.min.js"></script>
+<script src="../../../../resources/static/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
 
 
-<script src="js/dashboard/dashboard-1.js"></script>
+<script src="../../../../resources/static/js/dashboard/dashboard-1.js"></script>
 </body>
 </html>
