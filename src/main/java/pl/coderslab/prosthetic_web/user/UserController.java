@@ -29,7 +29,6 @@ public class UserController {
     private final StomatologyClinicService stomatologyClinicService;
     private final ProstheticLaboratoryService prostheticLaboratoryService;
 
-
     public UserController(UserServiceImpl userService, DentalProsthesisService dentalProsthesisService,
                           PatientService patientService, StomatologyClinicService stomatologyClinicService,
                           ProstheticLaboratoryService prostheticLaboratoryService) {
@@ -40,15 +39,9 @@ public class UserController {
         this.prostheticLaboratoryService = prostheticLaboratoryService;
     }
 
-    private AppUser getCurrentUser() {
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        CurrentUser currentUser = (CurrentUser) principal;
-        return userService.findByEmail(currentUser.getAppUser().getEmail());
-    }
-
     @GetMapping("")
     public String dashboard(Model model) {
-        AppUser user = getCurrentUser();
+        AppUser user = userService.getCurrentUser();
         if (user.isStomatologist()) {
             StomatologyClinic clinic = user.getStomatologyClinic();
             model.addAttribute("clinic", clinic);
@@ -66,62 +59,26 @@ public class UserController {
 
             List<DentalProsthesis> prostheses = dentalProsthesisService.prosthesesByUser(user);
             model.addAttribute("prostheses", prostheses);
-        }
-        else {
+        } else {
             System.out.println(user.getEmail());
         }
         model.addAttribute("user", user);
         return "/dashboard";
     }
 
-
-    @GetMapping("/clinic")
-    public String addClinicForm(Model model) {
-        StomatologyClinic chosenClinic = new StomatologyClinic();
-        model.addAttribute("chosenClinic", chosenClinic);
-        model.addAttribute("clinics", stomatologyClinicService.clinicList());
-        return "/clinic-form";
-    }
-
-    @PostMapping("/clinic")
-    public String performClinicForm(StomatologyClinic clinic) {
-        AppUser user = getCurrentUser();
-        StomatologyClinic chosenClinic = stomatologyClinicService.getClinic(clinic.getId());
-        user.setStomatologyClinic(chosenClinic);
-        userService.saveUser(user);
-        return "redirect:/user";
-    }
-
-    @GetMapping("/laboratory")
-    public String addLaoboratoryForm(Model model) {
-        ProstheticLaboratory chosenLaboratory = new ProstheticLaboratory();
-        model.addAttribute("chosenLaboratory", chosenLaboratory);
-        model.addAttribute("laboratories", prostheticLaboratoryService.laboratoryList());
-        return "/laboratory-form";
-    }
-
-    @PostMapping("/laboratory")
-    public String performLaboratoryForm(ProstheticLaboratory laboratory) {
-        AppUser currentUser = getCurrentUser();
-        ProstheticLaboratory chosenLabolatory = prostheticLaboratoryService.getLaboratory(laboratory.getId());
-        currentUser.setProstheticLaboratory(chosenLabolatory);
-        userService.changeUser(currentUser);
-        return "redirect:/user";
-    }
-
     @GetMapping("/data")
-    public String changeUserData(Model model){
-        AppUser user = getCurrentUser();
+    public String changeUserData(Model model) {
+        AppUser user = userService.getCurrentUser();
         model.addAttribute("user", user);
         Hibernate.initialize(user.getSpecializations());
-        model.addAttribute("specializationsList",user.getSpecializations());
+        model.addAttribute("specializationsList", user.getSpecializations());
         return "/change-data";
     }
 
     @PostMapping("/data")
-    public String performUserData(AppUser user){
-        AppUser currentUser = getCurrentUser();
-        userService.updateUser(currentUser.getId(),user.getEmail(), user.getFirstName(), user.getLastName(),
+    public String performUserData(AppUser user) {
+        AppUser currentUser = userService.getCurrentUser();
+        userService.updateUser(currentUser.getId(), user.getEmail(), user.getFirstName(), user.getLastName(),
                 user.getCertificateNumber());
         return "/user";
     }

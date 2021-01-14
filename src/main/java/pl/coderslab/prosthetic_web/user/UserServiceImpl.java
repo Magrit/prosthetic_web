@@ -1,6 +1,7 @@
 package pl.coderslab.prosthetic_web.user;
 
 import org.hibernate.Hibernate;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.coderslab.prosthetic_web.places.ProstheticLaboratory;
@@ -19,6 +20,12 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
+    }
+
+    public AppUser getCurrentUser() {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        CurrentUser currentUser = (CurrentUser) principal;
+        return userRepository.findByEmail(currentUser.getAppUser().getEmail());
     }
 
     @Override
