@@ -29,13 +29,12 @@ public class DentalProsthesisController {
         return userService.findByEmail(currentUser.getAppUser().getEmail());
     }
 
-        @GetMapping("/user/prosthesis")
+    @GetMapping("/user/prosthesis")
     public String getProstheses(Model model) {
         AppUser currentUser = getCurrentUser();
         List<DentalProsthesis> prostheses = prosthesisService.prosthesesByUser(currentUser);
         model.addAttribute("prostheses", prostheses);
         return "/user/prosthesis";
     }
-
 
 }
