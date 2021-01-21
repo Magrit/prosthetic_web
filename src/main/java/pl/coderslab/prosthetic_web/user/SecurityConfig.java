@@ -13,14 +13,16 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    @Bean
-    public SpringDataUserDetailsService customUserDetailsService() {
-        return new SpringDataUserDetailsService();
+
+    private final UserServiceImpl userService;
+
+    public SecurityConfig(UserServiceImpl userService) {
+        this.userService = userService;
     }
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+    public SpringDataUserDetailsService customUserDetailsService() {
+        return new SpringDataUserDetailsService(userService);
     }
 
     protected void configure(HttpSecurity http) throws Exception {

@@ -13,12 +13,12 @@ import java.util.Set;
 
 public class SpringDataUserDetailsService implements UserDetailsService {
 
-    private UserService userService;
+    private final UserService userService;
 
-    @Autowired
-    public void setUserRepository(@Qualifier("userServiceImpl") UserService userService) {
+    public SpringDataUserDetailsService(UserService userService) {
         this.userService = userService;
     }
+
 
     @Override
     public UserDetails loadUserByUsername(String username) {
