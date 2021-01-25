@@ -10,12 +10,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Rejestracja</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16"
-          href="<c:url value="../../images/favicon.png"/>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<c:url value="../../../resources/images/favicon.png"/>">
+    <!-- Chartist -->
+    <link rel="stylesheet" href="<c:url value="../../../resources/plugins/chartist/css/chartist.min.css"/>">
+    <link rel="stylesheet" href="<c:url value="../../../resources/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css"/>">
     <!-- Custom Stylesheet -->
-    <link href="<c:url value="../plugins/jquery-steps/css/jquery.steps.css"/>"
-          rel="stylesheet">
-    <link href="<c:url value="../css/style.css"/>" rel="stylesheet">
+    <link href="<c:url value="../../../resources/css/style.css"/>" rel="stylesheet">
 </head>
 <body class="h-100">
 
@@ -143,13 +143,13 @@
 <!--**********************************
     Scripts
 ***********************************-->
-<script src="../../../../resources/static/plugins/common/common.min.js"></script>
-<script src="../../../../resources/static/js/custom.min.js"></script>
-<script src="../../../../resources/static/js/settings.js"></script>
-<script src="../../../../resources/static/js/gleek.js"></script>
-<script src="../../../../resources/static/js/styleSwitcher.js"></script>
+<script src="../../../resources/plugins/common/common.min.js"></script>
+<script src="../../../resources/js/custom.min.js"></script>
+<script src="../../../resources/js/settings.js"></script>
+<script src="../../../resources/js/gleek.js"></script>
+<script src="../../../resources/js/styleSwitcher.js"></script>
 
-<script src="../../../../resources/static/js/plugins-init/form-specialization.js"></script>
+<script src="../../../resources/js/plugins-init/form-specialization.js"></script>
 <!--**********************************
     Scripts
 ***********************************-->

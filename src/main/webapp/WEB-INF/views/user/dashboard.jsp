@@ -7,13 +7,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Dashboard</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../../images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<c:url value="../../resources/images/favicon.png"/>">
     <!-- Chartist -->
-    <link rel="stylesheet" href="../plugins/chartist/css/chartist.min.css">
-    <link rel="stylesheet" href="../plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css">
+    <link rel="stylesheet" href="<c:url value="../../../resources/plugins/chartist/css/chartist.min.css"/>">
+    <link rel="stylesheet" href="<c:url value="../../../resources/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css"/>">
     <!-- Custom Stylesheet -->
-    <link href="../css/style.css" rel="stylesheet">
-
+    <link href="<c:url value="../../../resources/css/style.css"/>" rel="stylesheet">
 </head>
 <body>
 <!--*******************
@@ -119,7 +118,7 @@ Preloader end
                                     <a href="/user/laboratory" class="btn mb-1 btn-success">Dodaj pracownię</a>
                                 </c:when>
                                 <c:otherwise>
-                                    <p class="card-text">${laboratory. address} <br/>${laboratory.city}</p>
+                                    <p class="card-text">${laboratory.address} <br/>${laboratory.city}</p>
                                     <a href="/user/laboratory" class="btn mb-1 btn-success">Zmień pracownię</a>
                                 </c:otherwise>
                             </c:choose>
@@ -149,21 +148,33 @@ Preloader end
                                     <p class="text-muted"><code></code>
                                     </p>
                                     <div class="accordion">
-                                        <c:forEach items="${prostheses}" var="prosthesis">
-                                            <div class="card">
-                                                <div class="card-header">
-                                                    <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne4"
-                                                        aria-expanded="true"
-                                                        aria-controls="collapseOne4"><i class="fa"
-                                                                                        aria-hidden="true"></i>${prosthesis.deadline}
-                                                    </h5>
+                                        <c:choose>
+                                            <c:when test="${empty prostheses}">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h5 class="mb-0">Nie masz prac do wykonania</h5>
+                                                    </div>
                                                 </div>
-                                                <div id="collapseOne4" class="collapse show"
-                                                     data-parent="#accordion-three">
-                                                    <div class="card-body">${prosthesis.description}</div>
-                                                </div>
-                                            </div>
-                                        </c:forEach>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <c:forEach items="${prostheses}" var="prosthesis">
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne4"
+                                                                aria-expanded="true"
+                                                                aria-controls="collapseOne4"><i class="fa"
+                                                                                                aria-hidden="true"></i>${prosthesis.deadline}
+                                                            </h5>
+                                                        </div>
+                                                        <div id="collapseOne4" class="collapse show"
+                                                             data-parent="#accordion-three">
+                                                            <div class="card-body">${prosthesis.description}</div>
+                                                        </div>
+                                                    </div>
+                                                </c:forEach>
+                                            </c:otherwise>
+                                        </c:choose>
+
                                     </div>
                                 </div>
                             </div>

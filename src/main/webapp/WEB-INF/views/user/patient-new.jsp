@@ -9,14 +9,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Add patient</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="<c:url value="../../images/favicon.png"/> ">
+    <link rel="icon" type="image/png" sizes="16x16" href="<c:url value="../../../resources/images/favicon.png"/>">
     <!-- Chartist -->
-    <link type="text/css" rel="stylesheet" href="<c:url value="../plugins/chartist/css/chartist.min.css"/>"/>
-    <link type="text/css" rel="stylesheet"
-          href="<c:url value="../plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css"/>"/>
+    <link rel="stylesheet" href="<c:url value="../../../resources/plugins/chartist/css/chartist.min.css"/>">
+    <link rel="stylesheet" href="<c:url value="../../../resources/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css"/>">
     <!-- Custom Stylesheet -->
-    <link type="text/css" href="<c:url value="../css/style.css"/>" rel="stylesheet">
-
+    <link href="<c:url value="../../../resources/css/style.css"/>" rel="stylesheet">
 </head>
 <body>
 

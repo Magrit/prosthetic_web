@@ -49,7 +49,6 @@ public class UserController {
         }
         if (user.isTechnician()) {
             ProstheticLaboratory laboratory = user.getProstheticLaboratory();
-            System.out.println(laboratory.getAddress());
             model.addAttribute("laboratory", laboratory);
 
             List<DentalProsthesis> prostheses = dentalProsthesisService.prosthesesByUser(user);
@@ -58,7 +57,7 @@ public class UserController {
             System.out.println(user.getEmail());
         }
         model.addAttribute("user", user);
-        return "user/dashboard";
+        return "/user/dashboard";
     }
 
     @GetMapping("/data")

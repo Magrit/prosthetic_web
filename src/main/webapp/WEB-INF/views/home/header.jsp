@@ -14,13 +14,13 @@
         ***********************************-->
 <div class="nav-header">
     <div class="brand-logo">
-        <sec:authorize access="isAuthenticated()"> <a href="/dashboard"></sec:authorize>
+        <sec:authorize access="isAuthenticated()"> <a href="/user"></sec:authorize>
             <sec:authorize access="isAnonymous()"><a href="/"></sec:authorize>
-            <b class="logo-abbr"><img src="<d:url value="../images/logo.png" />" alt=""> </b>
-            <span class="logo-compact"><img src="<d:url value="../images/logo-compact.png" />"
+            <b class="logo-abbr"><img src="<d:url value="../../../resources/images/logo.png" />" alt=""> </b>
+            <span class="logo-compact"><img src="<d:url value="../../../resources/images/logo-compact.png" />"
                                             alt=""></span>
             <span class="brand-title">
-                        <img src="<d:url value="../images/logo-text.png"/> " alt="">
+                        <img src="<d:url value="../../../resources/images/logo-text.png"/> " alt="">
                     </span>
         </a>
     </div>
@@ -286,11 +286,11 @@
 <!--**********************************
     Header end ti-comment-alt
 ***********************************-->
-<script src="../plugins/common/common.min.js"></script>
-<script src="../js/custom.min.js"></script>
-<script src="../js/settings.js"></script>
-<script src="../js/gleek.js"></script>
-<script src="../js/styleSwitcher.js"></script>
+<script src="../../../resources/plugins/common/common.min.js"></script>
+<script src="../../../resources/js/custom.min.js"></script>
+<script src="../../../resources/js/settings.js"></script>
+<script src="../../../resources/js/gleek.js"></script>
+<script src="../../../resources/js/styleSwitcher.js"></script>
 
 
 </body>

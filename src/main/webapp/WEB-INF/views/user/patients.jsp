@@ -7,14 +7,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Protezy</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="<c:url value="../images/favicon.png"/>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<c:url value="../../../resources/images/favicon.png"/>">
     <!-- Chartist -->
-    <link type="text/css" rel="stylesheet" href="<c:url value="../plugins/chartist/css/chartist.min.css"/>"/>
-    <link type="text/css" rel="stylesheet"
-          href="<c:url value="../plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css"/>"/>
+    <link rel="stylesheet" href="<c:url value="../../../resources/plugins/chartist/css/chartist.min.css"/>">
+    <link rel="stylesheet" href="<c:url value="../../../resources/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css"/>">
     <!-- Custom Stylesheet -->
-    <link type="text/css" href="<c:url value="../css/style.css"/>" rel="stylesheet">
-
+    <link href="<c:url value="../../../resources/css/style.css"/>" rel="stylesheet">
 </head>
 <body>
 <!--*******************
@@ -89,14 +87,14 @@ Preloader end
 <!--**********************************
     Scripts
 ***********************************-->
-<script src="../plugins/common/common.min.js"></script>
-<script src="../js/custom.min.js"></script>
-<script src="../js/settings.js"></script>
-<script src="../js/gleek.js"></script>
-<script src="../js/styleSwitcher.js"></script>
+<script src="../../../resources/plugins/common/common.min.js"></script>
+<script src="../../../resources/js/custom.min.js"></script>
+<script src="../../../resources/js/settings.js"></script>
+<script src="../../../resources/js/gleek.js"></script>
+<script src="../../../resources/js/styleSwitcher.js"></script>
 
-<script src="../plugins/tables/js/jquery.dataTables.min.js"></script>
-<script src="../plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
-<script src="../plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
+<script src="../../../resources/plugins/tables/js/jquery.dataTables.min.js"></script>
+<script src="../../../resources/plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
+<script src="../../../resources/plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
 </body>
 </html>

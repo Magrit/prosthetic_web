@@ -15,12 +15,10 @@ public class DentalProsthesisController {
 
     private final UserServiceImpl userService;
     private final DentalProsthesisService prosthesisService;
-    private final PatientService patientService;
 
-    public DentalProsthesisController(UserServiceImpl userService, DentalProsthesisService prosthesisService, PatientService patientService) {
+    public DentalProsthesisController(UserServiceImpl userService, DentalProsthesisService prosthesisService) {
         this.userService = userService;
         this.prosthesisService = prosthesisService;
-        this.patientService = patientService;
     }
 
     private AppUser getCurrentUser() {
