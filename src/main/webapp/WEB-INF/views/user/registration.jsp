@@ -13,7 +13,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="<c:url value="../../../resources/images/favicon.png"/>">
     <!-- Chartist -->
     <link rel="stylesheet" href="<c:url value="../../../resources/plugins/chartist/css/chartist.min.css"/>">
-    <link rel="stylesheet" href="<c:url value="../../../resources/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css"/>">
+    <link rel="stylesheet"
+          href="<c:url value="../../../resources/plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css"/>">
     <!-- Custom Stylesheet -->
     <link href="<c:url value="../../../resources/css/style.css"/>" rel="stylesheet">
 </head>
@@ -34,7 +35,7 @@
     Preloader end
 ********************-->
 <div id="main-wrapper">
-    <%@include file="../home/header.jsp"%>
+    <%@include file="../home/header.jsp" %>
 
     <div class="login-form-bg h-100">
         <div class="container h-100">
@@ -94,18 +95,18 @@
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <div class=" form-check form-check-inline">
+                                                <label class="form-check-label" id="technician">
+                                                    <form:checkbox path="technician"
+                                                                      cssClass="form-check-input"/>Technik</label>
                                                 <label class="form-check-label">
-                                                    <form:radiobutton path="technician" id="tech"
-                                                                   cssClass="form-check-input"/>Technik</label>
-                                                <label class="form-check-label">
-                                                    <form:radiobutton path="stomatologist"
-                                                                   cssClass="form-check-input"/>Stomatolog</label>
+                                                    <form:checkbox path="stomatologist" id="stomatologist"
+                                                                      cssClass="form-check-input"/>Stomatolog</label>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-12" id="spec" style="display: none">
                                         <div class="form-group">
-                                            <div id="spec" class="form-check-inline">
+                                            <div class="form-check-inline">
                                                 <form:checkboxes path="specializations"
                                                                  cssClass="form-check-input"
                                                                  items="${specList}"

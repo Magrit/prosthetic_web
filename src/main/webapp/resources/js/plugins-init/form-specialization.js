@@ -1,13 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    let tech = document.querySelector("#tech");
-    let spec = document.querySelector("#spec");
-    console.log(tech);
+    const technician = document.querySelector("#technician").firstElementChild;
+    const spec = document.querySelector("#spec");
+    console.log(technician);
     console.log(spec);
 
-    if (tech.checked) {
-        spec.style.visibility = 'visible';
-    } else {
-        spec.style.visable = 'hidden';
-    }
+    technician.addEventListener('focus', evt => {
+        if (technician.checked){
+            spec.style.display = 'none';
+        }else {
+            spec.style.display = 'block';
+        }
+    });
 });
